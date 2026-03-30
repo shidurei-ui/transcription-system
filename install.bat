@@ -1,3 +1,5 @@
 @echo off
 chcp 65001 >nul
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0installer_gui.ps1"
+title Installing Transcription System...
+echo Downloading installer...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/shidurei-ui/transcription-system/main/installer_gui.ps1' -OutFile '%TEMP%\installer_gui.ps1' -UseBasicParsing; & '%TEMP%\installer_gui.ps1'"
