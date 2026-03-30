@@ -298,7 +298,8 @@ $installBtn.Add_Click({
             # 7. API Key
             Set-Prog 85 "Saving API key..."
             Add-Log "Saving API key..." "#ffd460"
-            "GEMINI_API_KEY=$key" | Set-Content (Join-Path $sd ".env") -Encoding UTF8
+            $envPath = Join-Path $sd ".env"
+            [System.IO.File]::WriteAllText($envPath, "GEMINI_API_KEY=$key", (New-Object System.Text.UTF8Encoding $false))
             Add-Log "[OK] API key saved" "#7fdbca"
 
             # 8. Unblock
