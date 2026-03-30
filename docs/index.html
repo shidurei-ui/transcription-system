@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcription System - Install</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .icon { font-size: 64px; margin-bottom: 10px; }
+        h1 { font-size: 28px; color: #e94560; margin-bottom: 5px; }
+        .subtitle { color: #888; font-size: 14px; margin-bottom: 30px; }
+        .steps {
+            background: #0f3460;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+        .steps h3 { color: #ffd460; margin-bottom: 12px; font-size: 15px; }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .step-num {
+            background: #e94560;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233,69,96,0.4);
+        }
+        .note {
+            background: #0a0a1a;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #7fdbca;
+            line-height: 1.8;
+        }
+        .note code {
+            background: #1a1a2e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #ffd460;
+        }
+        .warn {
+            color: #ffd460;
+            font-size: 12px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">&#x1F399;</div>
+        <h1>&#x200F;מערכת התמלולים</h1>
+        <p class="subtitle">תמלול אוטומטי של הרצאות</p>
+
+        <div class="steps">
+            <h3>&#x200F;איך זה עובד?</h3>
+            <div class="step">
+                <span class="step-num">1</span>
+                <span>&#x200F;לחץ על הכפתור למטה להורדה</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span>&#x200F;פתח את הקובץ שירד (install.bat)</span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span>&#x200F;הכנס מפתח Gemini API (חינמי) ולחץ Install</span>
+            </div>
+            <div class="step">
+                <span class="step-num">4</span>
+                <span>&#x200F;טען את התוסף לכרום — וזהו!</span>
+            </div>
+        </div>
+
+        <a class="download-btn" href="https://github.com/shidurei-ui/transcription-system/releases/latest/download/install.bat"
+           download>
+            &#x2B07;&#xFE0F; הורד והתקן
+        </a>
+
+        <div class="note">
+            &#x200F;&#x2139;&#xFE0F; ההתקנה אוטומטית לחלוטין — מתקינה Python, ffmpeg, וכל מה שצריך.<br>
+            &#x200F;&#x1F513; צריך מפתח Gemini API? <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#52b4ff">לחץ כאן (חינם)</a>
+        </div>
+
+        <p class="warn">
+            &#x200F;&#x26A0;&#xFE0F; Windows עלול להציג אזהרה כי הקובץ הורד מהאינטרנט.<br>
+            &#x200F;לחץ "More info" ואז "Run anyway".
+        </p>
+    </div>
+</body>
+</html>

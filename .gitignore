@@ -1,0 +1,6 @@
+.env
+temp/
+__pycache__/
+*.pyc
+ffmpeg.exe
+*.dll
