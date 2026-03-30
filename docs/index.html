@@ -152,7 +152,7 @@
         </div>
 
         <div class="copy-section">
-            <div class="command-box" id="cmdBox" onclick="copyCommand()">powershell -ep bypass -c "Invoke-WebRequest 'https://raw.githubusercontent.com/shidurei-ui/transcription-system/main/installer_gui.ps1' -OutFile $env:TEMP\ins.ps1; &amp; $env:TEMP\ins.ps1"</div>
+            <div class="command-box" id="cmdBox" onclick="copyCommand()">powershell -ep bypass -c "iwr 'https://raw.githubusercontent.com/shidurei-ui/transcription-system/main/installer_gui.ps1' -OutFile $HOME\ins.ps1; &amp; $HOME\ins.ps1"</div>
             <button class="copy-btn" id="copyBtn" onclick="copyCommand()">&#x1F4CB; העתק פקודה</button>
         </div>
 
