@@ -20,7 +20,7 @@
             background: #16213e;
             border-radius: 20px;
             padding: 40px;
-            max-width: 520px;
+            max-width: 540px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -32,14 +32,13 @@
         .steps {
             background: #0f3460;
             border-radius: 12px;
-            padding: 20px;
+            padding: 20px 20px 10px 20px;
             margin-bottom: 25px;
             text-align: right;
         }
-        .steps h3 { color: #ffd460; margin-bottom: 15px; font-size: 16px; text-align: center; }
         .step {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             padding: 10px 0;
             font-size: 15px;
@@ -58,12 +57,37 @@
             font-size: 14px;
             flex-shrink: 0;
         }
+        .step-content { flex: 1; }
+        .step-detail {
+            color: #888;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .highlight { color: #ffd460; font-weight: bold; }
 
-        .download-btn {
+        .copy-section {
+            margin-bottom: 20px;
+        }
+        .command-box {
+            background: #0a0a1a;
+            border: 2px solid #e94560;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-family: Consolas, monospace;
+            font-size: 12px;
+            color: #7fdbca;
+            text-align: left;
+            direction: ltr;
+            word-break: break-all;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            user-select: all;
+            cursor: pointer;
+        }
+        .copy-btn {
             display: inline-block;
             background: #e94560;
             color: white;
-            text-decoration: none;
             padding: 16px 50px;
             border-radius: 12px;
             font-size: 20px;
@@ -71,24 +95,14 @@
             cursor: pointer;
             border: none;
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-bottom: 20px;
         }
-        .download-btn:hover {
+        .copy-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(233,69,96,0.4);
         }
-
-        .warning-box {
-            background: #2a1a00;
-            border: 2px solid #ffd460;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 20px;
-            text-align: right;
+        .copy-btn.copied {
+            background: #2ecc71;
         }
-        .warning-box h3 { color: #ffd460; margin-bottom: 10px; font-size: 15px; }
-        .warning-box p { color: #ddd; font-size: 13px; line-height: 1.8; }
-        .warning-box strong { color: #ffd460; }
 
         .note {
             background: #0a0a1a;
@@ -109,33 +123,37 @@
         <p class="subtitle">תמלול אוטומטי של הרצאות</p>
 
         <div class="steps">
-            <h3>&#x200F;3 צעדים פשוטים:</h3>
             <div class="step">
                 <span class="step-num">1</span>
-                <span>&#x200F;לחץ "הורד והתקן" ופתח את הקובץ שירד</span>
+                <div class="step-content">
+                    <span>&#x200F;לחץ על <span class="highlight">"העתק פקודה"</span> למטה</span>
+                </div>
             </div>
             <div class="step">
                 <span class="step-num">2</span>
-                <span>&#x200F;הכנס מפתח Gemini API (חינמי) ולחץ Install</span>
+                <div class="step-content">
+                    <span>&#x200F;לחץ לחיצה ימנית על כפתור <span class="highlight">התחל</span> (הלוגו של Windows למטה בשורת המשימות)</span>
+                    <div class="step-detail">&#x200F;ובחר <span class="highlight">Windows PowerShell</span> או <span class="highlight">Terminal</span></div>
+                </div>
             </div>
             <div class="step">
                 <span class="step-num">3</span>
-                <span>&#x200F;טען את התוסף לכרום — וזהו!</span>
+                <div class="step-content">
+                    <span>&#x200F;בחלון השחור שנפתח: <span class="highlight">לחיצה ימנית</span> להדבקה ← <span class="highlight">Enter</span></span>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">4</span>
+                <div class="step-content">
+                    <span>&#x200F;הכנס מפתח Gemini API ולחץ <span class="highlight">Install</span></span>
+                    <div class="step-detail">&#x200F;<a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#52b4ff">לחץ כאן לקבל מפתח חינם</a></div>
+                </div>
             </div>
         </div>
 
-        <a class="download-btn"
-           href="https://github.com/shidurei-ui/transcription-system/releases/latest/download/install.bat">
-            &#x2B07;&#xFE0F; הורד והתקן
-        </a>
-
-        <div class="warning-box">
-            <h3>&#x200F;&#x26A0;&#xFE0F; אזהרת Windows — זה בסדר!</h3>
-            <p>
-                &#x200F;Windows מציג אזהרה כי הקובץ הורד מהאינטרנט. זה נורמלי.<br>
-                &#x200F;לחץ <strong>"More info"</strong> (מידע נוסף)<br>
-                &#x200F;ואז לחץ <strong>"Run anyway"</strong> (הפעל בכל זאת)
-            </p>
+        <div class="copy-section">
+            <div class="command-box" id="cmdBox" onclick="copyCommand()">powershell -ep bypass -c "Invoke-WebRequest 'https://raw.githubusercontent.com/shidurei-ui/transcription-system/main/installer_gui.ps1' -OutFile \"$env:TEMP\tinstall.ps1\"; & \"$env:TEMP\tinstall.ps1\""</div>
+            <button class="copy-btn" id="copyBtn" onclick="copyCommand()">&#x1F4CB; העתק פקודה</button>
         </div>
 
         <div class="note">
@@ -143,5 +161,20 @@
             &#x200F;&#x1F513; צריך מפתח Gemini API? <a href="https://aistudio.google.com/app/apikey" target="_blank">לחץ כאן (חינם)</a>
         </div>
     </div>
+
+    <script>
+    function copyCommand() {
+        var cmd = document.getElementById('cmdBox').innerText;
+        navigator.clipboard.writeText(cmd).then(function() {
+            var btn = document.getElementById('copyBtn');
+            btn.textContent = '\u2705 \u05D4\u05D5\u05E2\u05EA\u05E7! \u05E2\u05DB\u05E9\u05D9\u05D5 \u05E9\u05DC\u05D1 2 - \u05DC\u05D7\u05D9\u05E6\u05D4 \u05D9\u05DE\u05E0\u05D9\u05EA \u05E2\u05DC \u05D4\u05EA\u05D7\u05DC';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = '\uD83D\uDCCB \u05D4\u05E2\u05EA\u05E7 \u05E4\u05E7\u05D5\u05D3\u05D4';
+                btn.classList.remove('copied');
+            }, 8000);
+        });
+    }
+    </script>
 </body>
 </html>
